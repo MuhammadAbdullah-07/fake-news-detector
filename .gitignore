@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pkl
+*.csv
+*.model
+data/
+models/
+News_dataset/
+.env
+src/__pycache__/
+*.pyc
