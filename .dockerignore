@@ -1,0 +1,9 @@
+venv/
+data/
+News_dataset/
+__pycache__/
+*.pkl
+*.csv
+*.model
+.git
+.gitignore
