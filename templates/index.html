@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .real {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .fake {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fake News Detector</h1>
+    <p style="text-align:center">Enter a news article or headline to check if it's real or fake</p>
+
+    <form action="/predict" method="POST">
+        <textarea 
+            name="news_text" 
+            placeholder="Paste your news article here...">{{ news_text or '' }}</textarea>
+        <button type="submit">Check News</button>
+    </form>
+
+    {% if result %}
+        <div class="result {{ 'real' if result == 'REAL' else 'fake' }}">
+            {% if result == 'Real Text' %}
+                ✅ This news appears to be REAL
+            {% else %}
+                ❌ This news appears to be FAKE
+            {% endif %}
+        </div>
+    {% endif %}
+
+</body>
+</html>
